@@ -37,6 +37,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.TreeSet;
 
+import org.checkerframework.checker.determinism.qual.*;
+
 /**
  * A JSONObject is an unordered collection of name/value pairs. Its
  * external form is a string wrapped in curly braces with colons between the
@@ -669,7 +671,7 @@ public class JSONObject {
             return new String[0];
         }
         Class<? extends Object> klass = object.getClass();
-        Field[] fields = klass.getFields();
+        @Det Field @Det[] fields = klass.getFields();
         int length = fields.length;
 
         String[] names = new String[length];
